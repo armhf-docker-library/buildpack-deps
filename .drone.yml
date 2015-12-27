@@ -4,11 +4,11 @@ clone:
 build:
   image: armhfbuild/alpine:3.2
   commands:
-    - cd buildpack-deps; patch -p1 <../armhf.patch
+    - cd upstream; patch -p1 <../armhf.patch
 
 publish:
   docker:
-    file: buildpack-deps/jessie/curl/Dockerfile
+    file: upstream/jessie/curl/Dockerfile
     username: $$DOCKER_USER
     email: $$DOCKER_EMAIL
     password: $$DOCKER_PASSWORD
