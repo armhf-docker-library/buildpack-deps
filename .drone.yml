@@ -1,3 +1,10 @@
+matrix:
+  OS_VERSION:
+    - jessie
+  IMAGE_TYPE:
+    - curl
+    - scm
+
 clone:
   recursive: true
 
@@ -8,19 +15,19 @@ build:
 
 publish:
   docker:
-    file: upstream/jessie/curl/Dockerfile
+    file: upstream/$$OS_VERSION/$$IMAGE_TYPE/Dockerfile
     username: $$DOCKER_USER
     email: $$DOCKER_EMAIL
     password: $$DOCKER_PASSWORD
     repo: armhfbuild/buildpack-deps
-    tag: $$BRANCH
+    tag: $$OS_VERSION-$$IMAGE_TYPE
     storage_driver: overlay
 
     # Caching
     load: docker/image.tar
     save:
       destination: docker/image.tar
-      tag: $$BRANCH
+      tag: $$OS_VERSION-$$IMAGE_TYPE
 cache:
   mount:
     - docker/image.tar
