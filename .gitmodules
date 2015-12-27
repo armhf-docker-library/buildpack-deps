@@ -1,0 +1,3 @@
+[submodule "buildpack-deps"]
+	path = buildpack-deps
+	url = https://github.com/docker-library/buildpack-deps

@@ -1,0 +1,23 @@
+build:
+  image: armhfbuild/alpine:3.2
+  commands:
+    - cd buildpack-deps; patch -p1 <../armhf.patch
+
+publish:
+  docker:
+    file: buildpack-deps/jessie/curl/Dockerfile
+    username: $$DOCKER_USER
+    email: $$DOCKER_EMAIL
+    password: $$DOCKER_PASSWORD
+    repo: armhfbuild/buildpack-deps
+    tag: $$BRANCH
+    storage_driver: overlay
+
+    # Caching
+    load: docker/image.tar
+    save:
+      destination: docker/image.tar
+      tag: $$BRANCH
+cache:
+  mount:
+    - docker/image.tar

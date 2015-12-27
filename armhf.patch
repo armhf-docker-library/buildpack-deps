@@ -1,0 +1,30 @@
+diff --git a/jessie/Dockerfile b/jessie/Dockerfile
+index aa02341..cb84b13 100644
+--- a/jessie/Dockerfile
++++ b/jessie/Dockerfile
+@@ -1,4 +1,4 @@
+-FROM buildpack-deps:jessie-scm
++FROM armhfbuild/buildpack-deps:jessie-scm
+ 
+ RUN apt-get update && apt-get install -y --no-install-recommends \
+ 		autoconf \
+diff --git a/jessie/curl/Dockerfile b/jessie/curl/Dockerfile
+index 8fcacfb..d3f5854 100644
+--- a/jessie/curl/Dockerfile
++++ b/jessie/curl/Dockerfile
+@@ -1,4 +1,4 @@
+-FROM debian:jessie
++FROM armhfbuild/debian:jessie
+ 
+ RUN apt-get update && apt-get install -y --no-install-recommends \
+ 		ca-certificates \
+diff --git a/jessie/scm/Dockerfile b/jessie/scm/Dockerfile
+index bf27418..1cdef6d 100644
+--- a/jessie/scm/Dockerfile
++++ b/jessie/scm/Dockerfile
+@@ -1,4 +1,4 @@
+-FROM buildpack-deps:jessie-curl
++FROM armhfbuild/buildpack-deps:jessie-curl
+ 
+ # procps is very common in build systems, and is a reasonably small package
+ RUN apt-get update && apt-get install -y --no-install-recommends \
