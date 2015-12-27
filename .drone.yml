@@ -1,3 +1,6 @@
+clone:
+  recursive: true
+
 build:
   image: armhfbuild/alpine:3.2
   commands:
