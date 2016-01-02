@@ -5,12 +5,11 @@ matrix:
     - curl
     - scm
 
-clone:
-  recursive: true
-
 build:
   image: armhfbuild/alpine:3.2
   commands:
+    - apk add --update git
+    - git clone --single-branch https://github.com/docker-library/buildpack-deps upstream
     - cd upstream; patch -p1 <../armhf.patch
 
 publish:
