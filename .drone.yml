@@ -1,9 +1,8 @@
 matrix:
-  OS_VERSION:
+  IMAGE_TAG:
+    - jessie-curl
+    - jessie-scm
     - jessie
-  IMAGE_TYPE:
-    - curl
-    - scm
 
 build:
   image: armhfbuild/alpine:3.2
@@ -15,12 +14,12 @@ build:
 publish:
   docker:
     image: armhfplugins/drone-docker:docker-caching
-    file: upstream/$$OS_VERSION/$$IMAGE_TYPE/Dockerfile
+    file: upstream/$${IMAGE_TAG/-//}/Dockerfile
     username: $$DOCKER_USER
     email: $$DOCKER_EMAIL
     password: $$DOCKER_PASSWORD
     repo: armhfbuild/buildpack-deps
-    tag: $$OS_VERSION-$$IMAGE_TYPE
+    tag: $$IMAGE_TAG
     storage_driver: overlay
 
 cache:
